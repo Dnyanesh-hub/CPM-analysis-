@@ -1,21 +1,10 @@
-const express = require("express");
-const cors = require("cors");
-const runCPM = require("./cpmEngine");
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
 
-const app = express();
-app.use(cors());
-app.use(express.json());
-
-app.post("/calculate", (req, res) => {
-  try {
-    const activities = req.body.activities;
-    const result = runCPM(activities);
-    res.json(result);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
-
-app.listen(5000, () => {
-  console.log("Server running on http://localhost:5000");
-});
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
